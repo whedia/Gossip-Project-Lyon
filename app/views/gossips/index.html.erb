@@ -1,0 +1,50 @@
+
+   <%if flash[:success] == true %>
+
+    <div class="alert alert-success" role="alert">
+       <p class="text-center"> Ton gossip a été enregistré !</p>
+    </div>
+
+    <% end %>
+
+    <%if flash[:notice] == true %>
+
+    <div class="alert alert-success" role="alert">
+       <p class="text-center"> Ton compte a été créé !</p>
+    </div>
+
+    <% end %>
+
+    <%if flash[:now] == true %>
+
+    <div class="alert alert-success" role="alert">
+       <p class="text-center">Tu est connecté !</p>
+    </div>
+
+    <% end %> 
+    
+    <div>
+    <br>
+       <h1 class="text-center">Voici tout les GOSSIP !!!</h1>
+       <br>
+    </div>
+
+
+<container class="d-flex justify-content-around">
+  <div class="card-deck mb-3 d-flex justify-content-between" style="width: 36rem;">
+      <div class="card mx-4" style="width: 26rem;">
+      
+        <div class="card-body">
+
+          <% @gossips.each do |gossip| %>
+
+          <h5 class="card-title">The gossip : <%= gossip.title %></h5>
+          <h6 class="card-subtitle mb-3 text-muted">submitted by : <%= gossip.user.first_name %></h6>
+          <h4 class="card-text mb-4"><small class="text-muted"><%= gossip.content %></small></h4>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    </container>
+  <br>
+  <p class="lead mt-3 mb-4 ml-3 text-center"><%= link_to "Top of Page", root_path, :class => "btn btn-primary" %></p>
